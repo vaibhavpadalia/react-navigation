@@ -8,12 +8,20 @@ https://reactnavigation.org/docs/getting-started/
 ## Packages Used
 
 * @react-navigation/native
-* @react-navigation/stack
+* @react-navigation/stack - Used for stack navigator
+* @react-navigation/bottom-tabs - Used for bottom tab navigator
 * react-native-gesture-handler 
 * react-native-reanimated 
 * react-native-screens 
 * react-native-safe-area-context 
 * @react-native-community/masked-view
+
+**Note** : For using React native gesture handler import it in either index.js or App.js (at the top)
+
+```
+import 'react-native-gesture-handler';
+{... your code}
+```
 
 ## Screen 1
 
