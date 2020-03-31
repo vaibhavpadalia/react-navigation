@@ -14,50 +14,62 @@ const Tabs = createBottomTabNavigator();
 
 
 const AuthStackScreen = () => {
-  
-}
+  return (
+    <AuthStack.Navigator>
+      <AuthStack.Screen name={"Tab"} component={Tabs} />
+      <AuthStack.Screen name={"Dashboard"} component={Dashboard} />
+    </AuthStack.Navigator>
+  );
+};
+
+
+const TabsScreen = () => {
+  return (
+    <Tabs.Navigator>
+      <Tabs.Screen name={"Login"} component={Login} />
+      <Tabs.Screen name={"Signup"} component={Signup} />
+    </Tabs.Navigator>
+  );
+};
 
 
 
+// const tabNav = TabNavigator(
+//   {
+//     Login: { screen: Login },
+//     Signup: { screen: Signup }
+//   },
+//   {
+//     tabBarPosition: "bottom",
+//     tabBarOptions: {
+//       style: {
+//         backgroundColor: "#173746"
+//       }
+//     },
+//     lazyLoad: true
+//   }
+// );
 
+// const stackNav = StackNavigator({
+//   Tab: { screen: tabNav },
+//   Dashboard: {
+//     screen: Dashboard,
+//     navigationOptions: ({ navigation }) => ({
+//       title: "Dashboard",
+//       headerTitleStyle: { color: "white" },
+//       headerTintColor: "white",
+//       headerLeft: (
+//         <TouchableOpacity onPress={() => navigation.navigate("DrawerOpen")}>
+//           <Icon name="menu" size={30} color="white" />
+//         </TouchableOpacity>
+//       ),
+//       headerStyle: { paddingRight: 10, paddingLeft: 10, backgroundColor: "#173746" }
+//     })
+//   }
+// });
 
-
-const tabNav = TabNavigator(
-  {
-    Login: { screen: Login },
-    Signup: { screen: Signup }
-  },
-  {
-    tabBarPosition: "bottom",
-    tabBarOptions: {
-      style: {
-        backgroundColor: "#173746"
-      }
-    },
-    lazyLoad: true
-  }
-);
-
-const stackNav = StackNavigator({
-  Tab: { screen: tabNav },
-  Dashboard: {
-    screen: Dashboard,
-    navigationOptions: ({ navigation }) => ({
-      title: "Dashboard",
-      headerTitleStyle: { color: "white" },
-      headerTintColor: "white",
-      headerLeft: (
-        <TouchableOpacity onPress={() => navigation.navigate("DrawerOpen")}>
-          <Icon name="menu" size={30} color="white" />
-        </TouchableOpacity>
-      ),
-      headerStyle: { paddingRight: 10, paddingLeft: 10, backgroundColor: "#173746" }
-    })
-  }
-});
-
-const App = DrawerNavigator({
-  Home: { screen: stackNav }
-});
+// const App = DrawerNavigator({
+//   Home: { screen: stackNav }
+// });
 
 export default App;
