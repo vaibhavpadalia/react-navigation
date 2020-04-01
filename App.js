@@ -15,18 +15,12 @@ const Drawer = createDrawerNavigator();
 
 const AuthStackScreen = () => {
   return (
-    <AuthStack.Navigator>
-      <AuthStack.Screen name={"Test App"} component={TabsScreen} options={{
-        drawerLockMode: "locked-closed",
-        headerStyle: { backgroundColor: "#173746" },
-        headerTitleStyle: { color: 'white' },
-        drawerLockMode: 'locked-closed'
-      }} />
-      <AuthStack.Screen name={"Dashboard"} component={Dashboard} options={{
-        headerStyle: { backgroundColor: "#173746" },
-        headerTintColor: "white",
-        headerTitleStyle: { color: 'white' },
-      }} />
+    <AuthStack.Navigator screenOptions={{
+      headerStyle: { backgroundColor: "#173746" },
+      headerTitleStyle: { color: 'white' },
+    }}>
+      <AuthStack.Screen name={"Test App"} component={TabsScreen} />
+      <AuthStack.Screen name={"Dashboard"} component={Dashboard} options={{ headerTintColor: "white" }} />
     </AuthStack.Navigator>
   );
 };
