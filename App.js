@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import Login from "./src/components/Login";
 import Signup from "./src/components/Signup";
-import { TouchableOpacity } from "react-native";
 import Dashboard from "./src/components/Dashboard";
-// import { Icon } from "react-native-elements";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
