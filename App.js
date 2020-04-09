@@ -6,6 +6,8 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import DrawerComponent from "./src/components/DrawerComponent";
+import Home from "./src/components/Home";
 
 const AuthStack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -16,9 +18,11 @@ const AuthStackScreen = () => {
     <AuthStack.Navigator screenOptions={{
       headerStyle: { backgroundColor: "#173746" },
       headerTitleStyle: { color: 'white' },
+      headerTintColor: "white"
     }}>
       <AuthStack.Screen name={"Test App"} component={TabsScreen} />
-      <AuthStack.Screen name={"Dashboard"} component={Dashboard} options={{ headerTintColor: "white" }} />
+      <AuthStack.Screen name={"Dashboard"} component={Dashboard} />
+      <AuthStack.Screen name={"Home"} component={Home} />
     </AuthStack.Navigator>
   );
 };
@@ -36,7 +40,7 @@ const TabsScreen = () => {
 const App = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator>
+      <Drawer.Navigator drawerContent={(props) => <DrawerComponent {...props} />}>
         <Drawer.Screen name={"Authentication Stack"} component={AuthStackScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
