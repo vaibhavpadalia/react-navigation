@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TextInput, ScrollView } from "react-native";
-import {
-  FormLabel,
-  FormInput,
-  FormValidationMessage,
-  Button
-} from "react-native-elements";
-import Signup from "./Signup";
+import { View, Text, StyleSheet, TextInput, ScrollView, Button } from "react-native";
 
 class Login extends Component {
   state = {
@@ -14,17 +7,10 @@ class Login extends Component {
     password: ""
   };
 
-  static navigationOptions = {
-    headerTitle: "Test App",
-    headerStyle: { backgroundColor: "#173746" },
-    headerTitleStyle: { color: 'white'},
-    drawerLockMode: 'locked-closed'
-  };
-
   emailValidation = () => {
     if (this.state.email.length === 0) {
       return (
-        <FormValidationMessage>Email address is required</FormValidationMessage>
+        <Text style={{ color: "red" }}>Email address is required</Text>
       );
     } else {
       return null;
@@ -34,7 +20,7 @@ class Login extends Component {
   passwordValidation = () => {
     if (this.state.password.length === 0) {
       return (
-        <FormValidationMessage>Password is required</FormValidationMessage>
+        <Text style={{ color: "red" }}>Password is required</Text>
       );
     } else {
       return null;
@@ -45,28 +31,16 @@ class Login extends Component {
     const { navigate } = this.props.navigation;
 
     return (
-      <ScrollView keyboardShouldPersistTaps="always">
+      <ScrollView keyboardShouldPersistTaps="always" style={{ margin: 10 }}>
         <View style={styles.container}>
-          <FormLabel>Email:</FormLabel>
-          <FormInput
-            placeholder="Enter email"
-            onChangeText={text => this.setState({ email: text })}
-          />
+          <Text>{"Email:"}</Text>
+          <TextInput style={styles.textInput} placeholder="Enter email" onChangeText={text => this.setState({ email: text })} />
           {this.emailValidation()}
-          <FormLabel>Password:</FormLabel>
-          <FormInput
-            placeholder="Enter password"
-            onChangeText={text => this.setState({ password: text })}
-          />
+          <Text>{"Password:"}</Text>
+          <TextInput style={styles.textInput} placeholder="Enter password" onChangeText={text => this.setState({ password: text })} />
           {this.passwordValidation()}
           <View style={styles.submitStyle}>
-            <Button
-              title="LOGIN"
-              raised
-              icon={{ name: "code" }}
-              backgroundColor="#173746"
-              onPress={() => navigate('Dashboard')}
-            />
+            <Button title="LOGIN" onPress={() => navigate('Dashboard')} />
           </View>
         </View>
       </ScrollView>
@@ -81,6 +55,12 @@ const styles = StyleSheet.create({
   },
   submitStyle: {
     marginTop: 30
+  },
+  textInput: {
+    margin: 5,
+    borderColor: "black",
+    borderWidth: 1,
+    borderRadius: 5
   }
 });
 
