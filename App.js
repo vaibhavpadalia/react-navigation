@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image } from "react-native";
+import { Image, View, Text } from "react-native";
 import Login from "./src/components/Login";
 import Signup from "./src/components/Signup";
 import Dashboard from "./src/components/Dashboard";
@@ -32,21 +32,52 @@ const AuthStackScreen = () => {
 const TabsScreen = () => {
   return (
     <Tabs.Navigator
-      tabBarOptions={{ activeTintColor: "red", style: { backgroundColor: "#173746" } }}
+      tabBarOptions={{ activeTintColor: "white", style: { backgroundColor: "#173746" } }}
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
+        tabBarIcon: ({ focused, color, size, tintColor }) => {
+          let iconName, badgeCount;
           if (route.name === 'Login') {
             iconName = require("./src/images/login.png");
+            badgeCount = 2;
           } else if (route.name === 'Signup') {
             iconName = require("./src/images/signup.png");
+            badgeCount = 5;
           }
-          return <Image source={iconName} style={{ height: 25, width: 25 }} />;
+          return (
+            <View style={{ width: 24, height: 24, margin: 5 }}>
+              <Image source={iconName} style={{ height: 25, width: 25, tintColor: tintColor }} />
+              {badgeCountView(badgeCount)}
+            </View>);
         },
       })} >
       <Tabs.Screen name={"Login"} component={Login} />
       <Tabs.Screen name={"Signup"} component={Signup} />
     </Tabs.Navigator >
+  );
+};
+
+const badgeCountView = (badgeCount) => {
+  return (
+    <View>
+      {badgeCount > 0 && (
+        <View
+          style={{
+            position: 'absolute',
+            right: -6,
+            top: -10,
+            backgroundColor: 'red',
+            borderRadius: 6,
+            width: 15,
+            height: 15,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text style={{ color: 'white', fontSize: 13, fontWeight: 'bold' }}>
+            {badgeCount}
+          </Text>
+        </View>
+      )}
+    </View>
   );
 };
 
