@@ -27,9 +27,13 @@ class Login extends Component {
     }
   };
 
-  render() {
-    const { navigate } = this.props.navigation;
+  login = () => {
+    // const { store } = this.props;
+    // store.setLogin(true);
+    // this.propnavigate("Dashboard");
+  };
 
+  render() {
     return (
       <ScrollView keyboardShouldPersistTaps="always" style={{ margin: 10 }}>
         <View style={styles.container}>
@@ -40,7 +44,7 @@ class Login extends Component {
           <TextInput style={styles.textInput} placeholder="Enter password" onChangeText={text => this.setState({ password: text })} />
           {this.passwordValidation()}
           <View style={styles.submitStyle}>
-            <Button title="LOGIN" onPress={() => navigate('Dashboard')} />
+            <Button title="LOGIN" onPress={() => this.login()} />
           </View>
         </View>
       </ScrollView>

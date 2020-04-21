@@ -14,16 +14,22 @@ const AuthStack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
+
+
 const AuthStackScreen = () => {
   return (
-    <AuthStack.Navigator screenOptions={{
+    <AuthStack.Navigator screenOptions={({ route }) => ({
       headerStyle: { backgroundColor: "#173746" },
       headerTitleStyle: { color: 'white' },
-      headerTintColor: "white"
-    }}>
-      <AuthStack.Screen name={"Test App"} component={TabsScreen} />
-      <AuthStack.Screen name={"Dashboard"} component={Dashboard} />
-      <AuthStack.Screen name={"Home"} component={Home} />
+      headerTintColor: "white",
+    })}>
+      {true ?
+        <AuthStack.Screen name={"Test App"} component={TabsScreen} /> :
+        <>
+          <AuthStack.Screen name={"Dashboard"} component={Dashboard} />
+          <AuthStack.Screen name={"Home"} component={Home} />
+        </>
+      }
     </AuthStack.Navigator>
   );
 };
@@ -84,10 +90,11 @@ const badgeCountView = (badgeCount) => {
 const App = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator drawerContent={(props) => <DrawerComponent {...props} />}>
+      <Drawer.Navigator screenOptions={({ route }) => ({ swipeEnabled: false })}
+        drawerContent={(props) => <DrawerComponent {...props} />}>
         <Drawer.Screen name={"Authentication Stack"} component={AuthStackScreen} />
       </Drawer.Navigator>
-    </NavigationContainer>
+    </NavigationContainer >
   );
 };
 

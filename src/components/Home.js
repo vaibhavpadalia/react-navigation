@@ -2,9 +2,6 @@ import { Text, View, Image } from 'react-native';
 import React, { Component } from 'react';
 
 class Home extends Component {
-  static navigationOptions = {
-  };
-
   render() {
     return (
       <View style={{ alignItems: "center" }}>
