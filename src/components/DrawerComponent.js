@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
+import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 
 const DrawerComponent = (props) => {
   return (
-    <View style={{ alignItems: "center" }}>
+    <DrawerContentScrollView contentContainerStyle={{ alignItems: "center" }}>
       <Image source={require("../images/bat.png")} style={{ height: 150, width: 150 }} />
       <TouchableOpacity onPress={() => props.navigation.navigate("Dashboard")}>
         <Text>{"Dashboard"}</Text>
@@ -11,7 +12,7 @@ const DrawerComponent = (props) => {
       <TouchableOpacity onPress={() => props.navigation.navigate("Home")}>
         <Text>{"Home"}</Text>
       </TouchableOpacity>
-    </View>
+    </DrawerContentScrollView>
   );
 };
 

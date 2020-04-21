@@ -23,6 +23,12 @@ class Signup extends Component {
     }
   };
 
+  signup = () => {
+    const { store } = this.props;
+    store.loggedIn(true);
+    navigate("Dashboard");
+  };
+
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -36,7 +42,7 @@ class Signup extends Component {
           />
           {this.passwordValidation()}
           <View style={styles.submitStyle}>
-            <Button title="SIGN UP" onPress={() => navigate('Dashboard')} />
+            <Button title="SIGN UP" onPress={() => this.signup()} />
           </View>
         </View>
       </ScrollView>
